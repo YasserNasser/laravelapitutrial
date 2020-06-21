@@ -21,4 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['api','checkPassword','changeLanguage'],'namespace' => 'Api'],function(){
 
     Route::post('/get-main-categories','CategoryController@index');
+    Route::post('/get-category-id','CategoryController@getCategoryById');
+    Route::post('/set-category-status','CategoryController@setCategoryStatus');
 });
