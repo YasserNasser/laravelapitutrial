@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 class CategoryController extends Controller
 {
     public function index(){
-        $categories = Category::get();
+        $categories = Category::select('id','name_'.app()->getLocale() .' as name','created_at','updated_at')->get();
         return response()->json(['categories'=>$categories]);
     }
     public function index1(){
