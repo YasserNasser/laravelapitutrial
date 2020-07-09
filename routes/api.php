@@ -24,3 +24,8 @@ Route::group(['middleware' => ['api','checkPassword','changeLanguage'],'namespac
     Route::post('/get-category-id','CategoryController@getCategoryById');
     Route::post('/set-category-status','CategoryController@setCategoryStatus');
 });
+
+Route::group(['middleware' => ['api','checkPassword','changeLanguage','checkAdminToken:admin-api'],'namespace' => 'Api'],function(){
+
+    Route::get('offers','CategoryController@index');
+});
